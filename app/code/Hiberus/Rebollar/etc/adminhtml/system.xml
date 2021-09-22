@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="rebollar" sortOrder="999" translate="label">
+            <label>Rebollar</label>
+        </tab>
+        <section id="rebollar_nombre" showInDefault="1" sortOrder="10">
+            <label>Rebollar Nombre</label>
+            <tab>rebollar</tab>
+            <resource>Rebollar_Curso::config</resource>
+            <group id="general" showInDefault="1" sortOrder="10">
+                <label>General</label>
+                <field id="nombre_general" type="text" sortOrder="10" showInDefault="1">
+                    <label>Nombre General</label>
+                </field>
+                <field id="numero_general" type="text" sortOrder="10" showInDefault="1">
+                    <validate>integer</validate>
+                    <label>Numero General</label>
+                </field>
+            </group>
+        </section>
+
+    </system>
+</config>

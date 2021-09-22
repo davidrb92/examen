@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="descripcion_plugin" type="Hiberus\Rebollar\Plugin\Catalog\DescriptionPlugin" sortOrder="10" disabled="false"  />
+    </type>
+</config>
