@@ -4,7 +4,7 @@ namespace Hiberus\HiberusRebollar\Api\Data;
 
 interface ExamenInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const TABLE_NAME = 'hiberus_examen';
+    const TABLE_NAME = 'hiberus_exam';
     const COLUMN_ID = 'id_exam';
 
     /**
@@ -41,13 +41,13 @@ interface ExamenInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     public function getApellido();
 
     /**
-     * @param decimal $mark
+     * @param float $mark
      * @return $this
      */
     public function setMark($mark);
 
     /**
-     * @return decimal
+     * @return float
      */
     public function getMark();
 

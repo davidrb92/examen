@@ -1,1 +1,26 @@
-<h2>Hola Mundo</h2>
+<?php
+
+/**
+ * @var \Hiberus\HiberusRebollar\Block\Index $block
+ */
+$alumnos = $block->getNotas();
+?>
+
+<h2 class="title">Alumnos</h2>
+
+<?php
+    $media=0;
+foreach($alumnos as $alumno) {
+    $media+=$alumno->getMark();
+
+    ?>
+    <ul>
+        <li>Nombre:<?= $alumno->getNombre(); ?></li>
+        <li>Apellido: <?= $alumno->getApellido(); ?></li>
+        <li>Nota:<?= $alumno->getMark(); ?></li>
+    </ul>
+
+<?php } ?>
+
+<p> Total number of students: <?= count($alumnos) ?> </p>
+<p> Media: <?= $media/count($alumnos) ?> </p>

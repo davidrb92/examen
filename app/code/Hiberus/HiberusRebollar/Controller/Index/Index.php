@@ -18,15 +18,16 @@ class Index implements HttpGetActionInterface{
     }
 
 
+
     public function execute()
     {
-
+/*
         return $this->examenFactory->create();
         $collection = $examen->getCollection();
         foreach($collection as $item){
             echo $item->getData();
         }
-
+*/
         return $this->pageFactory->create();
     }
 

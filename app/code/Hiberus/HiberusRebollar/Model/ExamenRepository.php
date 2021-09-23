@@ -2,6 +2,7 @@
 
 namespace Hiberus\HiberusRebollar\Model;
 
+use Hiberus\HiberusRebollar\Api\Data\ExamenInterfaceFactory;
 use Hiberus\HiberusRebollar\Api\ExamenRepositoryInterface;
 use Hiberus\HiberusRebollar\Api\Data\ExamenInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
@@ -9,16 +10,16 @@ use Magento\Framework\Exception\CouldNotSaveException;
 class ExamenRepository implements ExamenRepositoryInterface
 {
 
-    protected ResourceModel\HiberusRebollar $resourceExamen;
-    protected \Hiberus\HiberusRebollar\Api\Data\ExamenInterfaceFactory $examenInterfaceFactory;
+    protected ResourceModel\Examen $resourceExamen;
+    protected ExamenInterfaceFactory $examenInterfaceFactory;
 
     /**
-     * @param ResourceModel\HiberusRebollar $resourceExamen
-     * @param \Hiberus\HiberusRebollar\Api\Data\ExamenInterfaceFactory $examenInterfaceFactory
+     * @param ResourceModel\Examen $resourceExamen
+     * @param ExamenInterfaceFactory $examenInterfaceFactory
      */
     public function __construct(
         \Hiberus\HiberusRebollar\Model\ResourceModel\Examen $resourceExamen,
-        \Hiberus\HiberusRebollar\Api\Data\ExamenInterfaceFactory $examenInterfaceFactory
+        ExamenInterfaceFactory $examenInterfaceFactory
     ) {
         $this->resourceExamen = $resourceExamen;
         $this->examenInterfaceFactory = $examenInterfaceFactory;
@@ -51,7 +52,7 @@ class ExamenRepository implements ExamenRepositoryInterface
     {
         try {
             $examen = $this->examenInterfaceFactory->create();
-            $examen->setEntityId($id_exam);
+            $examen->setExamyId($id_exam);
             $this->resourceExamen->load($examen, $id_exam);
         } catch (\Exception $e) {
             $examen = $this->examenInterfaceFactory->create();
@@ -67,7 +68,7 @@ class ExamenRepository implements ExamenRepositoryInterface
     public function delete(\Hiberus\HiberusRebollar\Api\Data\ExamenInterface $examen)
     {
         try {
-            $this->resourceCurso->delete($examen);
+            $this->resourceExamen->delete($examen);
         } catch (\Exception $e) {
 
             return false;
