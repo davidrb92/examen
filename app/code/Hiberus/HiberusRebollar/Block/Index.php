@@ -33,10 +33,19 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     public function getNotas() {
-
         $crearNotas = $this->examenInterfaceFactory->create();
-
         return $crearNotas->getCollection();
+    }
+
+    public function getMejoresNotas():array{
+        $notas= array();
+
+        foreach($this->getNotas() as $alumno){
+            array_push($notas,$alumno->getMark());
+        }
+        rsort($notas);
+
+        return $notas;
 
     }
 

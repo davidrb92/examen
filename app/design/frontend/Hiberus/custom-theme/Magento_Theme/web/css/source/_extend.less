@@ -1,0 +1,20 @@
+@import '_mixin.less';
+@margin-left-primary:20px;
+& when(@media-common = true){
+    ul:nth-child(even){
+        margin-left:@margin-left-primary ;
+    }
+
+    .title{
+        color: #0A246A;
+
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .title{
+        color: #eb5202;
+
+    }
+}

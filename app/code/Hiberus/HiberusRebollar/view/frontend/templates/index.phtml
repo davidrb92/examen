@@ -10,17 +10,41 @@ $alumnos = $block->getNotas();
 
 <?php
     $media=0;
+    $coincide=false;
+    $mejoresnotas = $block->getMejoresNotas();
+
 foreach($alumnos as $alumno) {
     $media+=$alumno->getMark();
+    for($i=0;$i<3;$i++) {
+        if ($mejoresnotas[$i] == $alumno->getMark()) {
+            $coincide = true;
+        }
+    }?>
 
-    ?>
-    <ul>
-        <li>Nombre:<?= $alumno->getNombre(); ?></li>
-        <li>Apellido: <?= $alumno->getApellido(); ?></li>
-        <li>Nota:<?= $alumno->getMark(); ?></li>
-    </ul>
+       <?php if($alumno->getMark()<5){?>
+            <ul class="suspenso">
+    <?php }else{?>
+            <ul class="aprobado">
+<?php
+    }
+        if($coincide){ ?>
+                <li><h2>Nombre:<?= $alumno->getNombre(); ?></h2></li>
+                <li><h2>Apellido: <?= $alumno->getApellido(); ?></h2></li>
+                <li><h2>Nota:<?= $alumno->getMark(); ?></h2></li>
+            <?php }else{ ?>
+                <li>Nombre:<?= $alumno->getNombre(); ?></li>
+                <li>Apellido: <?= $alumno->getApellido(); ?></li>
+                <li>Nota:<?= $alumno->getMark(); ?></li>
 
-<?php } ?>
+            <hr>
+
+
+<?php
+}
+        echo '</ul>';
+$coincide=false;
+} ?>
+
 
 <p> Total number of students: <?= count($alumnos) ?> </p>
 <p> Media: <?= $media/count($alumnos) ?> </p>

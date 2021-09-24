@@ -11,4 +11,7 @@
             </argument>
         </arguments>
     </type>
+    <type name="Hiberus\HiberusRebollar\Model\Examen">
+        <plugin name="descripcion_plugin" type="Hiberus\HiberusRebollar\Plugin\Mark\ChangeMark" sortOrder="10" disabled="false"  />
+    </type>
 </config>
