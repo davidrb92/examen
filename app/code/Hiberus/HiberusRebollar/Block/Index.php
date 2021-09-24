@@ -5,6 +5,8 @@ namespace Hiberus\HiberusRebollar\Block;
 use Hiberus\HiberusRebollar\Api\ExamenRepositoryInterface;
 use Hiberus\HiberusRebollar\Model\Examen;
 use Hiberus\HiberusRebollar\Api\Data\ExamenInterfaceFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
@@ -21,6 +23,7 @@ class Index extends \Magento\Framework\View\Element\Template
         Examen $examen,
         ExamenRepositoryInterface $examenRepository,
         ExamenInterfaceFactory $examenInterfaceFactory,
+        ScopeConfigInterface     $scopeConfig,
         \Hiberus\HiberusRebollar\Model\ResourceModel\Examen $examenResource,
         array $data = []
     ) {
@@ -29,6 +32,7 @@ class Index extends \Magento\Framework\View\Element\Template
         $this->examenRepository = $examenRepository;
         $this->examenInterfaceFactory = $examenInterfaceFactory;
         $this->examenResource = $examenResource;
+        $this->scopeConfig = $scopeConfig;
         parent::__construct($context, $data);
     }
 
@@ -47,6 +51,16 @@ class Index extends \Magento\Framework\View\Element\Template
 
         return $notas;
 
+    }
+
+    public function getElementos() {
+       $elementos = $this->scopeConfig->getValue( 'hiberus_elementos/general/elementos', ScopeInterface::SCOPE_STORE);
+       return $elementos;
+   }
+
+    public function getNota() {
+        $nota = $this->scopeConfig->getValue( 'hiberus_elementos/general/aprobados', ScopeInterface::SCOPE_STORE);
+        return $nota;
     }
 
 

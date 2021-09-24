@@ -4,6 +4,10 @@
  * @var \Hiberus\HiberusRebollar\Block\Index $block
  */
 $alumnos = $block->getNotas();
+$mejoresnotas = $block->getMejoresNotas();
+$maximoElementos = $block->getElementos();
+$marcaAprobado = $block->getNota();
+
 ?>
 
 <h2 class="title">Alumnos</h2>
@@ -11,17 +15,19 @@ $alumnos = $block->getNotas();
 <?php
     $media=0;
     $coincide=false;
-    $mejoresnotas = $block->getMejoresNotas();
+    $count=0;
 
 foreach($alumnos as $alumno) {
+if($maximoElementos<$count+1){
     $media+=$alumno->getMark();
+
     for($i=0;$i<3;$i++) {
         if ($mejoresnotas[$i] == $alumno->getMark()) {
             $coincide = true;
         }
     }?>
 
-       <?php if($alumno->getMark()<5){?>
+       <?php if($alumno->getMark()<$marcaAprobado){?>
             <ul class="suspenso">
     <?php }else{?>
             <ul class="aprobado">
@@ -42,7 +48,10 @@ foreach($alumnos as $alumno) {
 <?php
 }
         echo '</ul>';
+
+}
 $coincide=false;
+$count++;
 } ?>
 
 

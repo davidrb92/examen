@@ -14,4 +14,19 @@
     <type name="Hiberus\HiberusRebollar\Model\Examen">
         <plugin name="descripcion_plugin" type="Hiberus\HiberusRebollar\Plugin\Mark\ChangeMark" sortOrder="10" disabled="false"  />
     </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="rebollar_Comando" xsi:type="object">Hiberus\HiberusRebollar\Console\ExamenCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Model\View\Design">
+        <arguments>
+            <argument name="themes" xsi:type="array">
+                <item name="adminhtml" xsi:type="string">rebollarAdmin/nuevoTema</item>
+                <!-- Example: "Magento/backend" -->
+            </argument>
+        </arguments>
+    </type>
 </config>
