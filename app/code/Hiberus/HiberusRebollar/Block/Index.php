@@ -54,12 +54,16 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     public function getElementos() {
-       $elementos = $this->scopeConfig->getValue( 'hiberus_elementos/general/elementos', ScopeInterface::SCOPE_STORE);
-       return $elementos;
+       $numeroElementos = $this->scopeConfig->getValue( 'hiberus_elementos/general/elementos', ScopeInterface::SCOPE_STORE);
+
+       return $numeroElementos;
    }
 
     public function getNota() {
         $nota = $this->scopeConfig->getValue( 'hiberus_elementos/general/aprobados', ScopeInterface::SCOPE_STORE);
+        if(!isset($nota)){
+            $nota = 5;
+        }
         return $nota;
     }
 

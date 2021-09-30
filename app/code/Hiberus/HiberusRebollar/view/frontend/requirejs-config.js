@@ -1,10 +1,10 @@
-function ocultarNotas(){
-    alert("EEE")
-    var x= document.getElementById("notas");
+var config={
+    map:{
+        '*':{
+            ocultarNotas:'Hiberus_HiberusRebollar/js/notas',
+            alerta: 'Hiberus_HiberusRebollar/js/maxnota'
 
-    if(x.style.display==="none"){
-        x.style.display = "block"
-    }else{
-        x.style.display = "none"
+        }
     }
+
 }

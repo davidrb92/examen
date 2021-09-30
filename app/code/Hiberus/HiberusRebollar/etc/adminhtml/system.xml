@@ -19,7 +19,7 @@
 
                 <field id="aprobados" type="text" sortOrder="10" showInDefault="1">
                     <label>Nota para aprobar</label>
-                    <validate>integer</validate>
+                    <validate>number-type</validate>
                 </field>
             </group>
         </section>
