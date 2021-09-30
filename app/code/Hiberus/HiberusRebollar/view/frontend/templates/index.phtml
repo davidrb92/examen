@@ -17,9 +17,7 @@ if(!isset($maximoElementos)){
 <div><button id="ocultarNotas" >Ocultar/Mostrar notas</button></div>
 <div><button id="maxNota" >Mostrar mayor nota</button></div>
 <h2 class="title">Alumnos</h2>
-<div class="alert-modal-content">
-    <p>La mayor nota de la clase es: <?php echo max($arrayNotas)?></p>
-</div>
+
 <div id="notas">
 <?php
     $media=0;
@@ -73,29 +71,30 @@ $count++;
         });
     });
 
-    require([
+
+        require([
         'jquery',
-        'Magento_Ui/js/modal/alert'
-    ], function ($, alert) {
-        $(document).on("click","#maxNota", function() {
-            'use strict';
-            alert({
-                title: 'Mayor Nota',
-                content: $('.alert-modal-content'),
+        'Magento_Ui/js/modal/alert'], function($, alert) {
+            $('#maxNota').on('click', function(e){
+                alert({
+                title: 'Mejor Nota',
+                content: $('<div>La mejor nota es : <?= max($arrayNotas) ?></div>'),
                 modalClass: 'alert',
-                buttons: [{
-                    text: $.mage.__('Aceptar'),
-                    class: 'action primary accept',
+                    buttons: [{
+                        text: $.mage.__('Aceptar'),
+                        class: 'action primary accept',
 
-                    /**
-                     * Click handler.
-                     */
-                    click: function () {
-                        this.closeModal(true);
-                    }
-                }]
+                        /**
+                         * Click handler.
+                         */
+                        click: function () {
+                            this.closeModal(true);
+                        }
+                    }]
 
-            });
-        });
-    });
+                })
+            })
+         }
+        );
+
 </script>
